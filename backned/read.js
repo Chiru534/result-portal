@@ -40,7 +40,7 @@ const app = express();
 
 // CORS configuration for Vercel deployment
 app.use(cors({
-    origin: ['https://adarsh-result-ayio.vercel.app', 'http://localhost:3000'],
+    origin: ['https://result-portal-24ev.vercel.app', 'http://localhost:3000'],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
