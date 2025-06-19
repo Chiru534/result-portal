@@ -2,7 +2,7 @@ import fs from "fs";
 import pdf2table from "pdf2table";
 import { getStudentModel } from "./Models/student.js";
 import BranchPerformance from './Models/branchPerformance.js';
-import { sendResultEmail } from './config/emailConfig.js';
+import { sendResultEmail } from './config/EmailConfig.js';
 
 export async function processPdf(filePath, semester, processId) {
     if (!semester || typeof semester !== "string") {
