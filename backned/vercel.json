@@ -9,7 +9,14 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "read.js"
+      "dest": "read.js",
+      "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
     }
-  ]
+  ],
+  "functions": {
+    "read.js": {
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  }
 }

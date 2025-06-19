@@ -23,7 +23,8 @@ const startServer = async () => {
         await connectToDB();
         console.log('Connected to MongoDB');
         
-        const PORT = process.env.PORT || 3000;
+        const PORT = process.env.PORT || 5000;  // Backend runs on port 5000
+
         app.listen(PORT, () => {
             console.log(`Server running on port ${PORT}`);
         });
@@ -38,15 +39,29 @@ startServer();
 
 const app = express();
 
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ 
+        error: 'Something broke!',
+        message: err.message 
+    });
+});
+
 // CORS configuration for Vercel deployment
 app.use(cors({
-    origin: ['https://result-portal-24ev.vercel.app', 'http://localhost:3000'],
+    origin: ['https://adarsh-result-ayio.vercel.app', 'http://localhost:3000'],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 app.use(express.json());
+
+// Basic health check route
+app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'OK' });
+});
 
 // Move this before other route definitions
 app.use('/api/branch-performance', branchPerformanceRoutes);
