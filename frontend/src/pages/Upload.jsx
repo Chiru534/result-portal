@@ -21,7 +21,7 @@ function Upload() {
     formData.append('semester', semester);
 
     try {
-      const response = await axios.post('http://localhost:5000/upload', formData);
+      const response = await axios.post('https://finalproject-khaki-chi.vercel.app/upload', formData);
       
       const processId = response.data.processId;
       const pollInterval = setInterval(async () => {
