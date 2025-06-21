@@ -12,7 +12,7 @@ function Students() {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/auth/students');
+        const response = await axios.get('https://finalproject-khaki-chi.vercel.app/auth/students');
         if (response.data.success) {
           setStudents(response.data.data);
         } else {
