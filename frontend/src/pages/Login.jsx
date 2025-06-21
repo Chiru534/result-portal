@@ -15,7 +15,7 @@ function Login({ onLogin }) {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.post('http://localhost:5000/auth/login', form);
+      const res = await axios.post('https://finalproject-khaki-chi.vercel.app/auth/login', form);
       
       if (res.data.success) {
         localStorage.setItem('token', res.data.token);
